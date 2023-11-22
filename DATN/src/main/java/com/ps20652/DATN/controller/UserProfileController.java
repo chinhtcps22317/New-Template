@@ -58,10 +58,10 @@ public class UserProfileController {
             int cartItemCount = cartService.getCount(userId);
             model.addAttribute("cartItemCount", cartItemCount);
         }
-        return "app/user2/profile/info";
+        return "app/auth/profile/profile";
     }
    
- 
+	
 
     	 @RequestMapping("/editProfile")
         public String editProfile(Model model, Principal principal) {
