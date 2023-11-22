@@ -15,13 +15,13 @@
               class="duration-300 hover:duration-300 hover:text-orange-300 hover:underline hover:underline-offset-2">About</a>
           </div>
           <div class="">
-            <div class="dropdown dropdown-bottom">
+            <div class="dropdown dropdown-hover">
               <a th:href="@{/listproduct}" tabindex="0"
                 class="duration-300 hover:duration-300 hover:text-orange-300 hover:underline hover:underline-offset-2 cursor-pointer">Product</a>
-              <!-- <ul tabindex="0" class="dropdown-content z-[1] mt-5 menu p-2 shadow bg-white rounded-box w-52">
+              <ul tabindex="0" class="dropdown-content z-[1]  menu p-2 shadow bg-white rounded-box w-52">
                 <li><a>Item 1</a></li>
                 <li><a>Item 2</a></li>
-              </ul> -->
+              </ul>
             </div>
           </div>
           <div class="">
@@ -38,9 +38,26 @@
           </div>
         </div>
         <div class="flex gap-x-5 mt-1 text-orange-300 text-lg lg:text-xl">
-          <a href=""
-            class=" text-center items-center duration-300 hover:border hover:pt-1 hover:px-2 hover:border-orange-300 rounded hover:duration-300"><ion-icon
-              name="search-outline"></ion-icon></a>
+          <a 
+            class=" text-center items-center duration-300 hover:border hover:pt-1 hover:px-2 hover:border-orange-300 rounded hover:duration-300" onclick="my_modal_5.showModal()">
+            <ion-icon name="search-outline"></ion-icon>
+          </a>
+          <!-- Search -->
+          <dialog id="my_modal_5" class="modal sm:modal-middle ">
+            <div class="modal-box bg-white py-5">
+              <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+              </form>
+              <form action="">
+                  <h3 class="font-bold text-lg pb-5">Search </h3>
+                  <div class="flex justify-between  rounded-lg ">
+                    <input placeholder="Search Something...." type="text" class="bg-white text-sm text-black border outline-none px-2 border-orange-300 flex rounded-l-lg flex-1 py-2">
+                    <button class="px-5 bg-orange-300 text-white  rounded-r-lg">Search</button>
+                  </div>
+              </form> 
+            </div>
+          </dialog>
+          <!-- Search -->
           <div class="dropdown dropdown-hover">
             <label tabindex="0"
               class=" text-center items-center duration-300 hover:border hover:pt-1 hover:px-2 hover:border-orange-300 rounded hover:duration-300"><ion-icon
