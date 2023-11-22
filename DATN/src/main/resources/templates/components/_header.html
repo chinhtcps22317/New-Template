@@ -25,6 +25,10 @@
             </div>
           </div>
           <div class="">
+            <a th:href="@{/vouchers}"
+              class="duration-300 hover:duration-300 hover:text-orange-300 hover:underline hover:underline-offset-2 ">Lấy Voucher</a>
+          </div>
+          <div class="">
             <a th:href="@{/new}"
               class="duration-300 hover:duration-300 hover:text-orange-300 hover:underline hover:underline-offset-2 ">Blogs</a>
           </div>
@@ -43,8 +47,8 @@
                 name="person-outline"></ion-icon></label>
             <ul th:unless="${username}" tabindex="0"
               class="dropdown-content z-[1] menu p-2 shadow bg-white  rounded-box w-40">
-              <li><a>Sign-in</a></li>
-              <li><a>Sign-up</a></li>
+              <li><a th:href="@{/login}">Sign-in</a></li>
+              <li><a th:href="@{/register}">Sign-up</a></li>
             </ul>
             <!--  -->
             <form class="dropdown-content z-[1] menu p-2 shadow bg-white  rounded-box w-40"
@@ -56,7 +60,7 @@
                   xuất</button></li>
             </form>
             <!--  -->
-            <form class="dropdown-content z-[1] menu p-2 shadow bg-white  rounded-box w-40"
+            <form class="dropdown-content z-[1] menu p-2 shadow bg-white  rounded-box w-40 "
               sec:authorize="hasRole('ADMIN') or hasRole('STAFF')" th:if="${username}" th:action="@{/logout}"
               method="post" style="z-index: 999;">
               <li><a class="dropdown-item " th:href="@{/profile}" style="font-size: smaller;">Thông tin cá nhân</a></li>

@@ -45,7 +45,7 @@
    
     <div class="w-full md:w-[80%] xl:w-[70%] mx-auto my-10">
         <div class="py-5">
-            <p class="text-6xl font-semibold text-orange-300 text-center hover:underline hover:underline-offset-2 hover:duration-300 duration-300">Sign-up</p>
+            <p class="text-6xl font-semibold text-orange-300 text-center hover:underline hover:underline-offset-2 hover:duration-300 duration-300">Đăng Ký</p>
         </div>
         <div class="flex flex-col lg:flex-row gap-x-5 mt-5">
             <div class="w-full lg:w-[50%]">
@@ -54,9 +54,17 @@
             
             <div class="w-full lg:w-[50%] mt-10">
                 <form th:action="@{/register}" method="post" th:object="${user}" class="w-full flex flex-col gap-y-5">
+                  <div class="">
+                        
+                    <input name="username" th:field="*{username}" type="text" class="py-2  px-2 bg-transparent border-b-2 text-black border-orange-300  w-full outline-none" placeholder="Tên đăng nhập" />
+                </div>
+                <div class="">
+                    
+                    <input name="password" th:field="*{password}" type="text" class="py-2  px-2 bg-transparent border-b-2 text-black border-orange-300  w-full outline-none" placeholder="Mật khẩu" />
+                </div>
                     <div class="">
                         
-                        <input name="fullName" th:field="*{fullName}" type="text" class="py-2  px-2 bg-transparent border-b-2  text-black border-orange-300  w-full outline-none" placeholder="Full Name" />
+                        <input name="fullName" th:field="*{fullName}" type="text" class="py-2  px-2 bg-transparent border-b-2  text-black border-orange-300  w-full outline-none" placeholder="Họ và Tên" />
                     </div>
                     <div class="">
                         
@@ -64,29 +72,19 @@
                     </div>
                     <div class="">
                         
-                        <input name="address" th:field="*{address}" type="text" class="py-2  px-2 bg-transparent border-b-2 text-black border-orange-300  w-full outline-none" placeholder="Address" />
+                        <input name="address" th:field="*{address}" type="text" class="py-2  px-2 bg-transparent border-b-2 text-black border-orange-300  w-full outline-none" placeholder="Địa chỉ" />
                     </div>
                     <div class="">
                         
-                        <input name="phonenumber" th:field="*{phonenumber}" type="text" class="py-2  px-2 bg-transparent border-b-2 text-black border-orange-300  w-full outline-none" placeholder="Phone" />
+                        <input name="phonenumber" th:field="*{phonenumber}" type="text" class="py-2  px-2 bg-transparent border-b-2 text-black border-orange-300  w-full outline-none" placeholder="Số điện thoại" />
                     </div>
+                    
+                    
                     <div class="">
-                        
-                        <input name="username" th:field="*{username}" type="text" class="py-2  px-2 bg-transparent border-b-2 text-black border-orange-300  w-full outline-none" placeholder="User Name" />
-                    </div>
-                    <div class="">
-                        
-                        <input name="password" th:field="*{password}" type="text" class="py-2  px-2 bg-transparent border-b-2 text-black border-orange-300  w-full outline-none" placeholder="Passwrod" />
-                    </div>
-                    <div class="">
-                        
-                        <input type="text" class="py-2  px-2 bg-transparent border-b-2 text-black border-orange-300  w-full outline-none" placeholder="Confirm pass" />
-                    </div>
-                    <div class="">
-                        <button type="submit" class="border-2 border-orange-300 py-2 hover:bg-orange-300 hover:duration-300 duration-300 text-black hover:text-white rounded w-full">Sign-up</button>
+                        <button type="submit" class="border-2 border-orange-300 py-2 hover:bg-orange-300 hover:duration-300 duration-300 text-black hover:text-white rounded w-full">Đăng ký tài khoản</button>
                     </div>
                     <div class="text-center">
-                        <Link href="#" class="hover:text-orange-300 hover:underline hover:underline-offset-2">Are you have a Account? Sign-in!</Link>
+                        <Link href="#" class="hover:text-orange-300 hover:underline hover:underline-offset-2">Bạn đã có tài khoản? <a style="color: chocolate;" th:href="@{/login}">Đăng Nhập!</a></Link>
                     </div>
                 </form>
             </div>

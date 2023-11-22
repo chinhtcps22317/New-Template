@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ps20652.DATN.entity.Account;
 import com.ps20652.DATN.service.AccountService;
@@ -24,9 +25,12 @@ public class RegistrationController {
 	private AccountService userService;
 
 	@GetMapping("/register")
-	public String showRegistrationForm(Model model) {
+	public String showRegistrationForm(Model model, RedirectAttributes redirectAttributes) {
 	    model.addAttribute("user", new Account());
 	    model.addAttribute("registrationError", ""); // Đảm bảo trường lỗi được truyền vào giao diện
+
+		
+        redirectAttributes.addFlashAttribute("confirmationMessage", "Đăng ký tài khoản thành công");
 	    return "app/auth/login/sign-up";
 	}
 	

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/components/layout :: areas(~{::title},~{::body})}">
+
+<head>
+    <title>User Vouchers</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+   
+</head>
+
+<body>
+  
+    <!-- <div th:each="voucher : ${vouchers}" class="card lg:card-side bg-base-100 w-[30%] shadow-xl">
+        <div class="card lg:card-side bg-base-100 shadow-xl">
+            <figure><img class="w-[100px] h-[75px]" src="./assets/images/voucher.jpg" alt="Album"/></figure>
+            <div class="card-body">
+              <h2 class="card-title " th:text="'Mã: ' + ${voucher.voucherCode}"></h2>
+              <h4 class="" th:text="${'Giảm: ' + voucher.discountAmount} + 'K'"></h4>
+              <p th:text="${'Ngày bắt đầu: ' + voucher.startDate}" ></p>
+            <p th:text="${'Ngày kết thúc: ' + voucher.endDate}" ></p>
+            <p th:text="${'Số lượng: ' + voucher.quantity}" ></p>
+              <div class="card-actions justify-end">
+                <form th:action="@{vouchers/add-voucher}" method="post">
+              
+                    <input type="hidden" name="voucherId" th:value="${voucher.voucherId}" />
+                    <input type="hidden" name="password" th:value="${user.password}" />
+                    <input type="hidden" name="userId" th:value="${user.userId}" />
+                    <button class="text-sm rounded-lg join-item border px-5 border-orange-300 duration-300 text-black   hover:text-white hover:duration-300 hover:bg-orange-300 text-gray-400" type="button" th:if="${user.hasVoucher(voucher)}">Đã lấy mã</button>
+                    <button class="text-sm rounded-lg join-item border px-5 border-orange-300 duration-300 text-black   hover:text-white hover:duration-300 hover:bg-orange-300 text-gray-400" type="submit" th:unless="${user.hasVoucher(voucher)}">Lấy mã</button>
+                </form>
+               
+              </div>
+            </div>
+          </div> 
+          </div> -->
+    
+          <section class="w-[80%] mx-auto py-5">
+              <h2 class="text-4xl font-light py-8">Danh Sách Vouchers</h2> 
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 ">
+              <div class="" th:each="voucher : ${vouchers}">
+                <div class="card-horizontal shadow-xl mb-4">
+                  <div class="row g-0">
+                    <div class="col-md-4">
+                      <img src="./assets/images/voucher.jpg" alt="Album" class="img-fluid pt-4">
+                    </div>
+                    <div class="col-md-8 pt-3">
+                      <div class="card-body">
+                        <h2 class="card-title " th:text="'Mã: ' + ${voucher.voucherCode}"></h2>
+                        <h4 class="" th:text="${'Giảm: ' + voucher.discountAmount} + 'K'"></h4>
+                        <p th:text="${'Ngày bắt đầu: ' + voucher.startDate}" ></p>
+                        <p th:text="${'Ngày kết thúc: ' + voucher.endDate}" ></p>
+                        <p th:text="${'Số lượng: ' + voucher.quantity}" ></p>
+                        <div class="card-actions justify-end">
+                          <form th:action="@{vouchers/add-voucher}" method="post">
+                            <input type="hidden" name="voucherId" th:value="${voucher.voucherId}" />
+                            <input type="hidden" name="password" th:value="${user.password}" />
+                            <input type="hidden" name="userId" th:value="${user.userId}" />
+                            <button class="btn text-black hover:bg-orange-300 mx-5 py-2 my-2 border border-orange-300 btn-outline "type="button" th:if="${user.hasVoucher(voucher)}">Đã lấy mã</button>
+                            <button class="btn text-black hover:bg-orange-300 mx-5 py-2 my-2 border border-orange-300 btn-outline  "type="submit" th:unless="${user.hasVoucher(voucher)}">Lấy mã</button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          
+
+    <div class="container mt-5">
+        <!-- <h2 class="my-5">Danh Sách Vouchers</h2> -->
+        <div id="notification" th:if="${confirmationMessage != null}" class="alert alert-success">
+            <p th:text="${confirmationMessage}"></p>
+        </div>
+        <div class="row">
+             <!-- <div th:each="voucher : ${vouchers}" class="col-xl-6 col-md-12 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between p-md-1">
+                            <div class="d-flex flex-row">
+                                <div class="align-self-center  ">
+                                    <img src="./assets/images/voucher.jpg" class="w-100  px-3" style="height: 75px;"
+                                        alt="">
+                                </div>
+                                <div class="p-2">
+                                    <h4 th:text="'Mã: ' + ${voucher.voucherCode}"></h4>
+                                    <p th:text="${'Ngày bắt đầu: ' + voucher.startDate}" class="mb-0"></p>
+                                    <p th:text="${'Ngày kết thúc: ' + voucher.endDate}" class="mb-0"></p>
+                                </div>
+                            </div>
+                            <div class="align-self-center">
+                                <h4 class="h4 mb-2" th:text="${'Giảm: ' + voucher.discountAmount} + 'K'"></h4>
+                                <p th:text="${'Số lượng mã: ' + voucher.quantity}"></p>
+                                <form th:action="@{vouchers/add-voucher}" method="post">
+                                    
+                                    <input type="hidden" name="voucherId" th:value="${voucher.voucherId}" />
+                                    <input type="hidden" name="password" th:value="${user.password}" />
+                                    <input type="hidden" name="userId" th:value="${user.userId}" />
+                                    <button type="button" th:if="${user.hasVoucher(voucher)}">Đã lấy mã</button>
+                                    <button type="submit" th:unless="${user.hasVoucher(voucher)}">Lấy mã</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                  
+                </div>
+            </div> -->
+        </div> 
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        // Hiển thị thông báo khi trang được tải
+        $(document).ready(function () {
+            showNotification();
+        });
+
+        // Hiển thị thông báo và tự động ẩn sau 2 giây
+        function showNotification() {
+            $('#notification').fadeIn().delay(1500).fadeOut();
+        }
+    </script>
+</body>
+
+</html>

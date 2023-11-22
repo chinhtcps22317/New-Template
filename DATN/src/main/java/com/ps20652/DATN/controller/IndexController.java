@@ -68,13 +68,19 @@ public class IndexController {
     //
 
     @GetMapping("/listproduct")
-    public String product() {
+    public String product(Model model, Authentication authentication) {
+
+
+         List<Product> products = productService.findAll();
+         model.addAttribute("products", products);
+
         return "app/layout/list_product";
     }
 
     @GetMapping
     public String listProducts(Model model, Authentication authentication,
-            @RequestParam(name = "confirmationMessage", required = false) String confirmationMessage) {
+            @RequestParam(name = "confirmationMessage", required = false) String confirmationMessage, 
+            @RequestParam(name = "page", defaultValue = "0") int page) {
         List<CustomerFeedback> feedback = feedbackService.findAll();
         List<Product> products = productService.findAll();
         List<Category> cat = categoryService.findAll();
@@ -98,27 +104,29 @@ public class IndexController {
             unitsSoldMap.put(product.getProductId(), unitsSold);
         }
 
-        // for (Category category : cat) {
-        // List<Product> topProducts =
-        // productService.getTop4BestSellingProductsPerCategory(category.getCategoryId());
-        // model.addAttribute("topProductsPerCategory_" + category.getCategoryId(),
-        // topProducts);
-        // }
+        
 
-        for (Category category : cat) {
-            List<Product> topProducts = productService.getTop4BestSellingProductsPerCategory(category.getCategoryId());
-            topProductsPerCategory.put((category.getCategoryId()), topProducts);
-        }
+        // for (Category category : cat) {
+        //     List<Product> topProducts = productService.getTop4BestSellingProductsPerCategory(category.getCategoryId());
+        //     topProductsPerCategory.put((category.getCategoryId()), topProducts);
+        // }
 
         if (confirmationMessage != null) {
             model.addAttribute("confirmationMessage", confirmationMessage);
         }
+
+        List<Product> top8Product = productService.getEightProducts();
+
+         List<Product> top4Product = productService.getTop4BestSellingProducts();
+         
 
         model.addAttribute("topProductsPerCategory", topProductsPerCategory);
         model.addAttribute("unitsSoldMap", unitsSoldMap);
         model.addAttribute("products", products);
         model.addAttribute("categories", cat);
         model.addAttribute("fb", feedback);
+          model.addAttribute("top8Product", top8Product);
+           model.addAttribute("top4Product", top4Product);
 
         return "components/index";
     }
@@ -228,7 +236,7 @@ public class IndexController {
 
         model.addAttribute("products", searchResults);
 
-        return "user2/index2"; // Trả về view để hiển thị kết quả tìm kiếm
+        return "components/index"; // Trả về view để hiển thị kết quả tìm kiếm
     }
 
     @GetMapping("/searchPrice")

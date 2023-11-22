@@ -49,7 +49,7 @@ public class UserVoucherController {
 	            if (confirmationMessage != null) {
 	                model.addAttribute("confirmationMessage", confirmationMessage);
 	            }
-	            return "user/vouchers";
+	            return "app/user2/vouchers";
 	        }
 
 	        return "redirect:/login";
@@ -94,7 +94,7 @@ public class UserVoucherController {
 
 	            if (user != null) {
 	                model.addAttribute("user", user);
-	                return "user2/profile/voucher"; // Tên trang HTML bạn đã tạo
+	                return "app/user2/profile/voucher"; // Tên trang HTML bạn đã tạo
 	            }
 	        }
 

@@ -110,7 +110,7 @@ public class AdminProductController {
 
 		model.addAttribute("product", product);
 		model.addAttribute("categories", categories);
-		return "admin/edit-product";
+		return "AdminCpanel/edit-product";
 	}
 
 	@PostMapping("/edit/{productId}")

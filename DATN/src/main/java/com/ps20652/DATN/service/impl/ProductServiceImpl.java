@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -99,31 +100,52 @@ public class ProductServiceImpl implements ProductService {
 	    return totalUnitsSold;
 	}
 
-	@Override
-	public List<Product> getTop4BestSellingProductsPerCategory(int categoryId) {
-	    List<Product> top4ProductsPerCategory = new ArrayList<>();
-	    Category category = catService.findbyId(categoryId); // Sử dụng service để tìm danh mục bằng ID
+// 	@Override
+// 	public List<Product> getTop4BestSellingProductsPerCategory(int categoryId) {
+// 	    List<Product> top4ProductsPerCategory = new ArrayList<>();
+// 	    Category category = catService.findbyId(categoryId); // Sử dụng service để tìm danh mục bằng ID
 
-	    if (category != null) {
-	        List<Product> productsInCategory = productDAO.findByCategory(category);
+// 	    if (category != null) {
+// 	        List<Product> productsInCategory = productDAO.findByCategory(category);
 
-	        // Sắp xếp sản phẩm trong danh mục theo số lượng đã bán
-	        productsInCategory.sort((p1, p2) -> {
-	            int unitsSold1 = getTotalUnitsSold(p1);
-	            int unitsSold2 = getTotalUnitsSold(p2);
-	            return Integer.compare(unitsSold2, unitsSold1);
-	        });
+// 	        // Sắp xếp sản phẩm trong danh mục theo số lượng đã bán
+// 	        productsInCategory.sort((p1, p2) -> {
+// 	            int unitsSold1 = getTotalUnitsSold(p1);
+// 	            int unitsSold2 = getTotalUnitsSold(p2);
+// 	            return Integer.compare(unitsSold2, unitsSold1);
+// 	        });
 	        
-//	        productsInCategory.forEach(product -> {
-//	            System.out.println("Product ID: " + product.getProductId() + product.getCategory().getName() + ", Units Sold: " + getTotalUnitsSold(product));
-//	        });
+// //	        productsInCategory.forEach(product -> {
+// //	            System.out.println("Product ID: " + product.getProductId() + product.getCategory().getName() + ", Units Sold: " + getTotalUnitsSold(product));
+// //	        });
 
-	        // Lấy top 4 sản phẩm của danh mục và thêm vào danh sách chứa top 4 sản phẩm
-	        top4ProductsPerCategory = productsInCategory.stream().limit(4).collect(Collectors.toList());
-	    }
+// 	        // Lấy top 4 sản phẩm của danh mục và thêm vào danh sách chứa top 4 sản phẩm
+// 	        top4ProductsPerCategory = productsInCategory.stream().limit(4).collect(Collectors.toList());
+// 	    }
 
-	    return top4ProductsPerCategory;
-	}
+// 	    return top4ProductsPerCategory;
+// 	}
+
+@Override
+public List<Product> getTop4BestSellingProducts() {
+    List<Product> top4Products = new ArrayList<>();
+
+    // Lấy tất cả sản phẩm từ DAO hoặc Service
+    List<Product> allProducts = productDAO.findAll(); // Thay bằng phương thức lấy tất cả sản phẩm từ DAO hoặc Service của bạn
+
+    // Sắp xếp tất cả sản phẩm theo số lượng đã bán
+    allProducts.sort((p1, p2) -> {
+        int unitsSold1 = getTotalUnitsSold(p1);
+        int unitsSold2 = getTotalUnitsSold(p2);
+        return Integer.compare(unitsSold2, unitsSold1);
+    });
+
+    // Lấy top 8 sản phẩm bán chạy nhất và thêm vào danh sách top8Products
+    top4Products = allProducts.stream().limit(4).collect(Collectors.toList());
+
+    return top4Products;
+}
+
 
 	@Override
 	public Page<Product> getAllOrdersPaginated(PageRequest pageRequest) {
@@ -149,6 +171,13 @@ public class ProductServiceImpl implements ProductService {
 	            stockHistoryDAO.save(stockHistory);
 	        }
 	    }
+
+		public List<Product> getEightProducts() {
+			Pageable pageable = PageRequest.of(0, 8); // Lấy 8 sản phẩm đầu tiên
+			return productDAO.findAll(pageable).getContent();
+		}
+
+	
 
 
 

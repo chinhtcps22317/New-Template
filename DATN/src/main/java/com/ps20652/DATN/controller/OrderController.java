@@ -82,7 +82,7 @@ public class OrderController {
             model.addAttribute("confirmationMessage", confirmationMessage);
         }
 
-        return "user2/profile/ordered";
+        return "app/user2/profile/ordered";
         // Trả về trang hiển thị đơn hàng của người dùng sắp xếp theo thời gian
     }
 

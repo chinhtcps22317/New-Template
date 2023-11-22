@@ -58,7 +58,7 @@ public class UserProfileController {
             int cartItemCount = cartService.getCount(userId);
             model.addAttribute("cartItemCount", cartItemCount);
         }
-        return "user2/profile/info";
+        return "app/user2/profile/info";
     }
    
  

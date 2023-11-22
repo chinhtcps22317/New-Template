@@ -12,7 +12,10 @@ import com.ps20652.DATN.entity.Product;
 public interface ProductService {
 
 	
-	
+	public List<Product> getTop4BestSellingProducts();
+
+	public List<Product> getEightProducts();
+
 	public List<Product> findAll();
 
 	public Product create(Product pro);
@@ -31,7 +34,7 @@ public interface ProductService {
 	
 	List<Product> findByCategoryCategoryId(int categoryId);
 	
-	public List<Product> getTop4BestSellingProductsPerCategory(int categoryId);
+	// public List<Product> getTop4BestSellingProductsPerCategory(int categoryId);
 	
 	 Page<Product> getAllOrdersPaginated(PageRequest pageRequest);
 	 
