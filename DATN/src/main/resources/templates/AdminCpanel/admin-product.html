@@ -103,7 +103,7 @@ Max
                 <td th:text="${product.price}"></td>
                 <td th:text="${product.priceStaff}"></td>
                 <td th:text="${product.quantityInStock}"></td>
-                <td> <img style="width: 100px" th:src="@{'/assets/images/' + ${product.image}}"></td>
+                <td> <img style="width: 100px" th:src="@{'/assets/images/products' + ${product.image}}"></td>
                 <td>
             <a th:href="@{'/admin/products/edit/' + ${product.productId}}">Edit</a>
             <a th:href="@{'/admin/products/delete/' + ${product.productId}}">Delete</a>

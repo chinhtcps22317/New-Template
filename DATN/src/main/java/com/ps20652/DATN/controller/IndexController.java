@@ -236,7 +236,7 @@ public class IndexController {
 
         model.addAttribute("products", searchResults);
 
-        return "components/index"; // Trả về view để hiển thị kết quả tìm kiếm
+        return "app/layout/list_product"; // Trả về view để hiển thị kết quả tìm kiếm
     }
 
     @GetMapping("/searchPrice")

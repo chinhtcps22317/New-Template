@@ -141,7 +141,7 @@ public class AdminProductController {
 					String projectPath = resource.getFile().getAbsolutePath();
 
 					// Đường dẫn lưu trữ hình ảnh
-					String uploadPath = projectPath + "/static/assets/images/";
+					String uploadPath = projectPath + "/static/assets/images/products";
 					Path path = Paths.get(uploadPath);
 
 					// Lưu trữ hình ảnh vào thư mục uploads

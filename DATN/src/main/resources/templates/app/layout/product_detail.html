@@ -84,24 +84,17 @@
                 <div class="flex flex-col gap-y-10">
                         <!-- Title Product -->
                         <div class=" text-lg md:text-xl lg:text-4xl font-semibold">
-                            <p>Hoodie Degrey Is Us - HDIS</p>
+                            <p th:text="${products.name}"></p>
                         </div>
                         <!-- Price -->
                         <div class="flex items-center gap-x-5">
-                            <p class='line-through'>$430.000</p>
-                            <p class='text-xl text-orange-300 font-semibold'>$120,000</p>
+                       
+                            <p class='text-xl text-orange-300 font-semibold' th:text="${#numbers.formatDecimal(products.price, 0, 'COMMA', 0, 'POINT')} + ' VND'"></p>
                         </div>
                         <!-- Size -->
                         <div class="flex gap-x-5 text-black">
-                            <div class="text-xl">
-                                <p>Size: </p>
-                            </div>
-                            <div class="flex gap-x-2">                    
-                                <button  class="disabled:opacity-25 border px-3 rounded duration-300 hover:border-orange-300 hover:duration-300 " >S</button>
-                                <button  class="disabled:opacity-25 border px-3 rounded duration-300 hover:border-orange-300 hover:duration-300 " >M</button>
-                                <button  class="disabled:opacity-25 border px-3 rounded duration-300 hover:border-orange-300 hover:duration-300 " >L</button>
-                                <button  class="disabled:opacity-25 border px-3 rounded duration-300 hover:border-orange-300 hover:duration-300 " >XL</button>
-                            </div>
+                            
+                           
                         </div>
                         <!-- Count -->
                         <div class="flex flex-col md:flex-row justify-between w-full md:gap-x-1 ">
@@ -126,23 +119,20 @@
                                 <div class="collapse-content"> 
                                   <div class="">
                                     <ul>
-                                        <li>Chất Liệu: Như Lồn</li>
-                                        <li>Chất Liệu: Như Lồn</li>
-                                        <li>Chất Liệu: Như Lồn</li>
-                                        <li>Chất Liệu: Như Lồn</li>     
+                                      <p th:text="${products.description}"></p>  
                                     </ul>
                                   </div>
                                 </div>
                               </div>
 
-                              <div tabindex="0" class="collapse collapse-plus border rounded-lg ">
+                              <!-- <div tabindex="0" class="collapse collapse-plus border rounded-lg ">
                                 <div class="collapse-title text-xl font-medium">
                                   Dịch Vụ Giao Hàng
                                 </div>
                                 <div class="collapse-content"> 
                                   <p>tabindex="0" attribute is necessary to make the div focusable</p>
                                 </div>
-                              </div>
+                              </div> -->
                         </div>
                 </div>
             </div>

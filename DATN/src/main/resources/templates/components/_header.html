@@ -48,11 +48,11 @@
               <form method="dialog">
                 <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
               </form>
-              <form action="">
+              <form th:action="@{/searchName}">
                   <h3 class="font-bold text-lg pb-5">Search </h3>
                   <div class="flex justify-between  rounded-lg ">
-                    <input placeholder="Search Something...." type="text" class="bg-white text-sm text-black border outline-none px-2 border-orange-300 flex rounded-l-lg flex-1 py-2">
-                    <button class="px-5 bg-orange-300 text-white  rounded-r-lg">Search</button>
+                    <input name = "name"placeholder="Search Something...." type="text" class="bg-white text-sm text-black border outline-none px-2 border-orange-300 flex rounded-l-lg flex-1 py-2">
+                    <button type="submit" class="px-5 bg-orange-300 text-white  rounded-r-lg">Search</button>
                   </div>
               </form> 
             </div>
