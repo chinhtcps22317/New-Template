@@ -27,7 +27,7 @@
                     <!-- Avatar -->
                     <!-- Info -->
                     <div class="flex flex-col gap-y-5">
-                        <p>Huỳnh Tấn Phát</p>
+                        <p th:text="${user.fullName}">Huỳnh Tấn Phát</p>
                     </div>
                     <!-- Info -->
                 </div>
@@ -63,16 +63,16 @@
                         </div>
                         <div class="flex flex-col justify-between gap-y-10 text-end w-[80%]">
                             <div class="border-b">
-                                <input type="text" class="w-full bg-white text-black py-1 text-end outline-none" value="User">
+                                <input type="text" class="w-full bg-white text-black py-1 text-end outline-none" value="User" th:value="${user.username}">
                             </div>
                             <div class="border-b">
-                                <input type="text" class="w-full bg-white text-black py-1 text-end outline-none" value="Huỳnh Tấn Phát">
+                                <input type="text" class="w-full bg-white text-black py-1 text-end outline-none" th:value="${user.fullName}">
                             </div>
                             <div class="border-b">
-                                <input type="text" class="w-full bg-white text-black py-1 text-end outline-none" value="0916215180">
+                                <input type="text" class="w-full bg-white text-black py-1 text-end outline-none" th:value="'0' + ${user.phonenumber}">
                             </div>
                             <div class="border-b">
-                                <input type="text" class="w-full bg-white text-black py-1 text-end outline-none" value="phatht2911@gmail.com">
+                                <input type="text" class="w-full bg-white text-black py-1 text-end outline-none" th:value="${user.email}">
                             </div>
                         </div>
                     </section>

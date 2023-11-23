@@ -72,6 +72,11 @@ public class IndexController {
 
 
          List<Product> products = productService.findAll();
+         if (authentication != null && authentication.isAuthenticated()) {
+            String username = authentication.getName();
+            model.addAttribute("username", username);
+         }
+         
          model.addAttribute("products", products);
 
         return "app/layout/list_product";
@@ -269,7 +274,7 @@ public class IndexController {
         model.addAttribute("products", products);
         model.addAttribute("allcategory", allcat);
         model.addAttribute("categoryID", categoryId);
-        return "user2/listProduct";
+        return "app/layout/list_product";
     }
 
     private int getUserIDByUsername(String username) {
