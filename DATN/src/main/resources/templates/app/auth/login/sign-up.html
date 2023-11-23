@@ -81,10 +81,12 @@
                     
                     
                     <div class="">
-                        <button type="submit" class="border-2 border-orange-300 py-2 hover:bg-orange-300 hover:duration-300 duration-300 text-black hover:text-white rounded w-full">Đăng ký tài khoản</button>
+                        <button type="submit" class="border-2 border-orange-300 py-2 hover:bg-orange-300 hover:duration-300 duration-300 text-black hover:text-white rounded-lg w-full">Đăng ký tài khoản</button>
                     </div>
-                    <div class="text-center">
-                        <Link href="#" class="hover:text-orange-300 hover:underline hover:underline-offset-2">Bạn đã có tài khoản? <a style="color: chocolate;" th:href="@{/login}">Đăng Nhập!</a></Link>
+                    <div class="text-center flex flex-col">
+                        <p href="#" class="hover:text-orange-300 hover:underline hover:underline-offset-2">Bạn đã có tài khoản? <a class="text-orange-300 " th:href="@{/login}">Đăng Nhập!</a></p>
+                        <a href="#" class="hover:text-orange-300 hover:underline hover:underline-offset-2"> <a class="text-orange-300 hover:underline" th:href="@{/forgot-password}">Quên Mật Khẩu</a></a>
+
                     </div>
                 </form>
             </div>

@@ -39,17 +39,18 @@
                         <input type="text" name="password" class="py-2  px-2 bg-transparent border-b-2 text-black border-orange-300  w-full outline-none" placeholder="Password" />
                     </div>
 
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input " id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Remember me !</label>
+                    <div class="mb-3 flex gap-x-2">
+                        <input type="checkbox" class="checkbox checkbox-warning " id="exampleCheck1">
+                        <label class="text-black font-light" for="exampleCheck1">Remember me !</label>
                       </div>
     
                       <div class="g-recaptcha" data-sitekey="6Le9nRMpAAAAAMh2ZxdOpYDvej47c4tGQv3LG2IC"></div>
                     <div class="">
-                        <button type="submit" class="border-2 border-orange-300 py-2 hover:bg-orange-300 hover:duration-300 duration-300 text-black hover:text-white rounded w-full">Sign-in</button>
+                        <button type="submit" class="border-2 border-orange-300 py-2 hover:bg-orange-300 hover:duration-300 duration-300 text-black hover:text-white rounded-lg w-full">Sign-in</button>
                     </div>
-                    <div class="text-center">
-                        <Link href="#" class="hover:text-orange-300 hover:underline hover:underline-offset-2">Bạn chưa có tài khoản? <a style="color: chocolate;" th:href="@{/register}">Đăng Ký!</a></Link>
+                    <div class="text-center flex flex-col">
+                        <p href="#" class="hover:text-orange-300 hover:underline hover:underline-offset-2">Bạn chưa có tài khoản? <a class="text-orange-300" th:href="@{/register}">Đăng Ký!</a></p>
+                        <a href="#" class="hover:text-orange-300 hover:underline hover:underline-offset-2"> <a class="text-orange-300 hover:underline" th:href="@{/forgot-password}">Quên Mật Khẩu</a></a>
                     </div>
                 </form>
             </div>

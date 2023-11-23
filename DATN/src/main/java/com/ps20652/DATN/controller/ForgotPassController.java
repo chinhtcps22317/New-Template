@@ -20,7 +20,7 @@ public class ForgotPassController {
 
     @GetMapping("/forgot-password")
     public String showForgotPasswordForm() {
-        return "security2/forgot-password"; // Trả về tên của file HTML template cho quên mật khẩu
+        return "app/auth/login/forgot_password"; // Trả về tên của file HTML template cho quên mật khẩu
     }
     
    
@@ -44,7 +44,7 @@ public class ForgotPassController {
         if (email != null) {
             // Sử dụng email ở đây cho mục đích hiển thị hoặc xử lý
             model.addAttribute("email", email);
-            return "security2/enter-otp"; // Trả về trang nhập OTP
+            return "app/auth/login/verifyOtp"; // Trả về trang nhập OTP
         } else {
             // Xử lý nếu không tìm thấy thông tin email
             return "redirect:/forgot-password"; // Chuyển hướng nếu không có email trong session
